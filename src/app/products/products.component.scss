@@ -1,0 +1,44 @@
+.product-box {
+    padding: 2px 10px;
+    margin: 10px 0px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+
+    &__heading {
+        font-size: 15px;
+       
+       
+        a {
+            color: black;
+            text-decoration: none;
+            transition: 0.15s ease-in-out all;
+            &:hover {
+                color: cornflowerblue;
+            }
+        }
+    }
+    &__image {
+        max-width: 250px;
+        width: 100%;
+    }
+    &__price {
+        text-align: right;
+    }
+}
+.products {
+    &__header {
+        height: 48px;
+        margin-bottom: 8px;
+    }
+    &__sort {
+        max-width: 100px;
+        height: 40px;
+    }
+    &__container {
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+}

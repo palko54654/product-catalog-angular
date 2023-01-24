@@ -1,0 +1,30 @@
+<main class="container">
+    <div class="row justify-content-center">
+        <app-categories class="col-10 col-md-4" [categoriesList]="categories$" [onCategoryClick]="onCategoryClick.bind(this)"></app-categories>
+        <div class="col-10 col-md-8">
+            <div class="row products__header justify-content-between align-items-center">
+                <p class="col-2 m-0">All Products</p>
+                <div class="col-8 d-flex justify-content-end align-items-center">
+                    <p class="col-2 m-0">Sort by:</p>
+                    <select (change)="sortProducts($event)"  class="form-select products__sort col-2">
+                        <option selected="selected" value="name">Name</option>
+                        <option value="price">Price</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row products__container justify-content-center">
+                <ng-container  *ngIf="filteredProducts$ | async as products;">
+                    <div class="col-9 col-md-6 col-lg-4" *ngFor="let product of products$ | async; index as id;">
+                        <div class="product-box">
+                            <h1 class="product-box__heading">
+                                <a [routerLink]="['/product', product.id]" href="">{{product.name}}</a> 
+                            </h1>
+                            <img class="product-box__image" src="{{product.image}}" alt="">
+                            <p class="product-box__price mb-0">{{ product.price | currency:'USD' }}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</main>

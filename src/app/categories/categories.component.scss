@@ -1,0 +1,33 @@
+.sidebar {
+    &__box {
+        border: 2px solid black;
+        border-radius: 10px;
+        height: 600px;
+        
+        @media (max-width: 768px) {
+            height: 100%;
+            margin-bottom: 20px;
+        }
+        &__list {
+            margin-top: 5px;
+        }
+    }
+
+    .active {
+        color: cornflowerblue !important;
+        text-decoration: underline !important;
+    }
+
+    .category-link {
+        color: black;
+        text-decoration: none;
+        transition: 0.15s ease-in-out all;
+        &:hover {
+            color: cornflowerblue;
+            text-decoration: underline;
+        }
+
+      
+    }
+}
+

@@ -1,0 +1,22 @@
+<div *ngIf="product; else Loading" class="product-detail__container">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 >{{ product.name }}</h1>
+        <a class="product-detail-btn" [routerLink]="['/']" href="">Back ←</a>
+    </div>
+    <div class="row justify-content-between product-detail__box">
+        <div class="col-4">
+            <div class="d-flex justify-content-between">
+                <p>Price</p>
+                <p class="product-detail-price">{{ product.price | currency:'USD' }}</p>
+            </div>
+            <img src="{{ product.image }}" alt="">
+        </div>
+        <div class="col-10 col-md-7">
+            <p>Product description</p>
+            <h5 class="font-l">{{ product.description }}</h5>
+        </div>
+    </div>
+</div>
+<ng-template #Loading>
+   Loading...
+</ng-template>

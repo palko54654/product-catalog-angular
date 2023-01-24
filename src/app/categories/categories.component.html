@@ -1,0 +1,17 @@
+<aside class="sidebar">
+    <h1 class="sidebar-heading">Products</h1>
+    <div class="sidebar__box">
+        <ul class="sidebar__box__list">
+            <li class="sidebar__box__list-item"><a class="category-link active" (click)="this.onCategoryClick($event)"  href="">All Products</a></li>
+            <li class="sidebar__box__list-item" *ngFor="let category of categoriesList | async; index as id;"><a class="category-link" (click)="this.onCategoryClick($event ,category.id)" href="">{{ category.name }}</a>
+                <ul class="sidebar__box__list" *ngIf="category.children">
+                    <li class="sidebar__box__list-item" *ngFor="let subCategory of category.children"><a class="category-link" (click)="this.onCategoryClick($event ,subCategory.id)" href="">{{ subCategory.name }}</a>
+                        <ul class="sidebar__box__list" *ngIf="subCategory.children">
+                            <li class="sidebar__box__list-item" *ngFor="let childrenCategory of subCategory.children"><a class="category-link" (click)="this.onCategoryClick($event ,childrenCategory.id)" href="">{{ childrenCategory.name }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>
