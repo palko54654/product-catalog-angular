@@ -70,21 +70,6 @@ export class ProductsEffect {
                 .getCategories()
                 .pipe(
                     map((data) => {
-                        // let tree = [];
-                        // let map = new Map();
-                        // for (let category of data) {
-                        //     map.set(category.id, { ...category, children: [] });
-                        // }
-                        // for (let category of map.values()) {
-                        //     if (category.parentCategoryId) {
-                        //         let parent = map.get(category.parentCategoryId);
-                        //         if (parent) {
-                        //             parent.children.push(category);
-                        //         }
-                        //     } else {
-                        //         tree.push(category);
-                        //     }
-                        // }
                         return categoriesFetchAPISuccess({ allCategories: data });
                     })
                 )

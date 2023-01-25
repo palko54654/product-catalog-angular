@@ -26,26 +26,6 @@ export class ProductsComponent implements OnInit {
     this.filteredProducts$ = this.store.pipe(select(selectProducts));
     this.categories$ = this.store.pipe(select(selectNestedCategories))
   }
-
-  //nest Categories 
-  createCategoryTree(categories: any[], parentCategoryId: string = 'parentCategoryId'): any[] {
-    let tree = [];
-    let map = new Map();
-    for (let category of categories) {
-        map.set(category.id, { ...category, children: [] });
-    }
-    for (let category of map.values()) {
-        if (category[parentCategoryId]) {
-            let parent = map.get(category[parentCategoryId]);
-            if (parent) {
-                parent.children.push(category);
-            }
-        } else {
-            tree.push(category);
-        }
-    }
-    return tree;
-  }
   
   //handle Click on category and filter products
   onCategoryClick(event: Event ,categoryId?: string) { 
@@ -66,12 +46,9 @@ export class ProductsComponent implements OnInit {
       this.sortByName()
     } else {
       this.sortByPrice()
-      this.categories$.subscribe(data => {
-        console.log(data)
-       })
-      
     }
   } 
+
   filterByCategory(categoryId?: string) {
     this.store.dispatch(filterProductsByCategory({categoryId}));
   }
